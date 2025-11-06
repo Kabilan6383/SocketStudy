@@ -1,12 +1,11 @@
-# Ex.No:1a  			Study of Socket Programming
+# Ex.No:1 - a Study of Socket Programming
 
 ## Aim: 
 To perform a study on Socket Programming
 ## Introduction:
-
- 	Socket programming is a crucial aspect of network communication, allowing for data exchange between computers over a network. It forms the backbone of various networked applications, enabling communication between clients and servers. This study explores the fundamental concepts of socket programming, its use cases, and provides a practical example to demonstrate its implementation.
+Socket programming is a crucial aspect of network communication, allowing for data exchange between computers over a network. It forms the backbone of various networked applications, enabling communication between clients and servers. This study explores the fundamental concepts of socket programming, its use cases, and provides a practical example to demonstrate its implementation.
 ## Understanding Socket Programming:
-	Socket programming involves the use of sockets, which serve as endpoints for communication. A socket is identified by an IP address and a port number, and it facilitates data transfer between a client and a server. The two main types of sockets are Stream Sockets, which provide a reliable, connection-oriented communication, and Datagram Sockets, which are connectionless and suitable for scenarios where reliability is less critical.
+Socket programming involves the use of sockets, which serve as endpoints for communication. A socket is identified by an IP address and a port number, and it facilitates data transfer between a client and a server. The two main types of sockets are Stream Sockets, which provide a reliable, connection-oriented communication, and Datagram Sockets, which are connectionless and suitable for scenarios where reliability is less critical.
 ## Key Concepts in Socket Programming:
 1.Sockets
 •	A socket is a software representation of a communication endpoint in a network.
@@ -14,13 +13,13 @@ To perform a study on Socket Programming
 •	Sockets can be classified into two main types: Stream Sockets and Datagram Sockets.
 •	Stream Sockets provide a reliable, connection-oriented communication, while Datagram Sockets are connectionless and operate in a best-effort mode.
 
-2. Client-Server Model
+2.Client-Server Model
 
 •	Socket programming typically follows the client-server model.
 •	The server listens for incoming connections from clients, while clients initiate connections to the server.
 •	Servers are passive, waiting for connection requests, and clients are active, initiating communication.
 
-3, TCP/IP Protocol:
+3.TCP/IP Protocol:
 
 •	Transmission Control Protocol (TCP) and Internet Protocol (IP) are the foundational protocols for socket programming.
 •	TCP provides reliable, connection-oriented communication, ensuring data integrity and order.
@@ -33,7 +32,7 @@ To perform a study on Socket Programming
 
 ## Server-Side Operations:
 
-•	Servers create a socket using socket() and bind it to a specific IP address and port using bind().
+• Servers create a socket using socket() and bind it to a specific IP address and port using bind().
 •	They then listen for incoming connections with listen() and accept connections with accept().
 •	Once a connection is establi
 •	shed, servers can send and receive data using send() and recv().
@@ -53,6 +52,37 @@ Socket programming finds applications in various domains, including web developm
 4.	Networked Games: Online multiplayer games rely on socket programming to facilitate communication between game clients and servers.
 5.	RPC mechanisms: which allow processes to execute code on a remote server, often use socket programming for communication.
 
+## Program
+
+### Server code:
+```
+import socket
+from datetime import datetime
+s=socket.socket()
+s.bind(('localhost',8000))
+s.listen(5)
+c,addr=s.accept()
+print("Client Address : ",addr)
+now = datetime.now()
+c.send(now.strftime("%dimport socket
+s=socket.socket()
+s.connect(('localhost',8000))
+print(s.getsockname())
+print(s.recv(1024).decode())
+s.send("acknowledgement recived from the server".encode())
+```
+
+### Client code:
+~~~
+import socket
+s=socket.socket()
+s.connect(('localhost',8000))
+print(s.getsockname())
+print(s.recv(1024).decode())
+s.send("acknowledgement recived from the server".encode())
+~~~
+## output:
+<img width="1643" height="781" alt="Screenshot 2025-11-06 100738" src="https://github.com/user-attachments/assets/9dd76500-7ea7-41dc-8d92-fd67bcdff26c" />
 
 ## Result:
 Thus the study of Socket Programming Completed Successfully
